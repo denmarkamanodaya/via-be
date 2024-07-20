@@ -1,0 +1,51 @@
+project-fetch-all-v1:
+  handler: src/handlers/project/fetch-all/v1.handler
+  events:
+    - http:
+        path: /v1/projects
+        method: GET
+        cors: true
+
+project-fetch-v1:
+  handler: src/handlers/project/fetch/v1.handler
+  events:
+    - http:
+        path: /v1/project/{id}
+        method: GET
+        cors: true
+        request:
+          parameters:
+            paths:
+              id: true
+
+project-create-v1:
+  handler: src/handlers/project/create/v1.handler
+  events:
+    - http:
+        path: /v1/project
+        method: PUT
+        cors: true
+
+project-update-v1:
+  handler: src/handlers/project/update/v1.handler
+  events:
+    - http:
+        path: /v1/project/{id}
+        method: PATCH
+        cors: true
+        request:
+          parameters:
+            paths:
+              id: true
+
+project-delete-v1:
+  handler: src/handlers/project/delete/v1.handler
+  events:
+    - http:
+        path: /v1/project/{id}
+        method: DELETE
+        cors: true
+        request:
+          parameters:
+            paths:
+              id: true

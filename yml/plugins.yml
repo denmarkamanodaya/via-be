@@ -1,0 +1,3 @@
+plugins:
+  - serverless-auto-swagger
+  - serverless-offline

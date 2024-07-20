@@ -1,0 +1,37 @@
+service: serverless-boilerplate
+frameworkVersion: '3'
+
+custom:
+  autoswagger:
+    title: 'VIA Backend'
+    apiType: 'http'
+    basePath: '/'
+    host: 'http://localhost:3000'
+  serverless-layers:
+    dependenciesPath: ./package.json
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-southeast-1
+  stage: ${env:ENV, 'dev'}
+  lambdaHashingVersion: 20201221
+  versionFunctions: false
+  logRetentionInDays: 90
+  timeout: 30
+  environment:
+    NODE_ENV: ${env:NODE_ENV, 'development'}
+
+package:
+  exclude:
+    - node_modules
+  patterns:
+    - '!package-lock.json'
+    - '!yarn.lock'
+
+functions:
+  - ${file(src/handlers/user/function.yml)}
+  - ${file(src/handlers/project/function.yml)}
+  - ${file(src/handlers/task/function.yml)}
+
+plugins: ${file(yml/plugins.yml):plugins}

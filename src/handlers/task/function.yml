@@ -1,0 +1,51 @@
+task-fetch-all-v1:
+  handler: src/handlers/task/fetch-all/v1.handler
+  events:
+    - http:
+        path: /v1/tasks
+        method: GET
+        cors: true
+
+task-fetch-v1:
+  handler: src/handlers/task/fetch/v1.handler
+  events:
+    - http:
+        path: /v1/task/{id}
+        method: GET
+        cors: true
+        request:
+          parameters:
+            paths:
+              id: true
+
+task-create-v1:
+  handler: src/handlers/task/create/v1.handler
+  events:
+    - http:
+        path: /v1/task
+        method: PUT
+        cors: true
+
+task-update-v1:
+  handler: src/handlers/task/update/v1.handler
+  events:
+    - http:
+        path: /v1/task/{id}
+        method: PATCH
+        cors: true
+        request:
+          parameters:
+            paths:
+              id: true
+
+task-delete-v1:
+  handler: src/handlers/task/delete/v1.handler
+  events:
+    - http:
+        path: /v1/task/{id}
+        method: DELETE
+        cors: true
+        request:
+          parameters:
+            paths:
+              id: true

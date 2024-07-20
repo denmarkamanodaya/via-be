@@ -1,0 +1,39 @@
+user-fetch-all-v1:
+  handler: src/handlers/user/fetch-all/v1.handler
+  events:
+    - http:
+        path: /v1/users
+        method: GET
+        cors: true
+
+user-fetch-v1:
+  handler: src/handlers/user/fetch/v1.handler
+  events:
+    - http:
+        path: /v1/user/{id}
+        method: GET
+        cors: true
+        request:
+          parameters:
+            paths:
+              id: true
+
+user-create-v1:
+  handler: src/handlers/user/create/v1.handler
+  events:
+    - http:
+        path: /v1/user
+        method: PUT
+        cors: true
+
+user-update-v1:
+  handler: src/handlers/user/update/v1.handler
+  events:
+    - http:
+        path: /v1/user/{id}
+        method: PATCH
+        cors: true
+        request:
+          parameters:
+            paths:
+              id: true
